@@ -1,0 +1,19 @@
+[{
+	"name": "bod",
+	"script": "./bin/www",
+	//"node_args": "–harmony",
+	"env": {
+	    "mysql": {
+	    	"host": "http://127.0.0.1",
+	    	"user": "root",
+		    "password": "",
+		    "database": "bod",
+	    	"port": 3306
+	    },
+	    "node": {
+	    	"host": "http://127.0.0.1",
+	    	"port": 88	
+	    }
+	  },
+	"watch": true
+}]

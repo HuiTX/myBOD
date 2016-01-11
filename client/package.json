@@ -1,0 +1,25 @@
+{
+  "name": "bod",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node-dev ./server/www"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^1.5.2",
+    "koa": "^1.1.2",
+    "koa-mount": "^1.3.0",
+    "koa-router": "^5.3.0",
+    "koa-static": "^2.0.0",
+    "lodash": "^3.10.1",
+    "md5": "^2.0.0",
+    "mysql": "^2.10.0",
+    "mysql-co": "0.0.4",
+    "socket.io": "^1.4.4",
+    "swig": "^1.4.2",
+    "uid-safe": "^2.0.0"
+  }
+}

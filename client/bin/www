@@ -1,0 +1,14 @@
+'use strict';
+
+var app = require('../app');
+var socketIo = require('socket.io') // io 利用事件机制来通信
+var http = require('http');
+var sqlConfig = process.env.mysql;
+var nodeConfig = process.env.node;
+
+let server, io
+//app.keys = ['secret key here']; // cookie 签名
+console.log(11111111111111);
+server = http.Server(app.callback());
+io = socketIo(server);
+server.listen(3000);
