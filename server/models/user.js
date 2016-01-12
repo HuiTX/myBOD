@@ -1,24 +1,19 @@
-var proxy = require('koa-proxy');
 var request = require('co-request');
+var mysql = require('./mysql');
 
 exports.isExist = function *(){
-
-    console.log(8888888888888888888888888);
-    console.log(this.request);
-
-
-
-
-
-
-    try{
-        proxy({
-            host: this.request.header.host + this.request.originalUrl,
-            map:{
-              body : 'true'
-            }
-        });
-    }catch(e){
-        console.log('error')
+    var opt = {
+        url: 'http://127.0.0.1:99/isExist',
+        encoding: null
     }
+    this.res.statusCode = 200;
+};
+
+exports.testSql = function *(){
+    var sql = 'select * from user';
+    //var data = yield mysql(sql);
+    //console.log(data);
+    mysql(sql, function(err, res){
+        //console.log(res);
+    });
 };

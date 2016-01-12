@@ -1,39 +1,16 @@
-var render = require('../render');
-var request = require('co-request');
+//var render = require('../render');
+var proxy = require('../../controllers/proxy').proxy;
 
 exports.login = function *(){
-	this.body = yield render('login');
+	//this.body = yield render('login');
+  this.body = yield this.render('login');
 };
 
 exports.isExist = function *(next){
-	var proxyRequest = {
-      url: 'http://127.0.0.1:100/isExist',
-      headers: { 'User-Agent': 'API-Proxy' },
-      //headers: this.header,
-      //encoding: null,
-      method: 'get'
-    };
-
-    try {
-        result = yield request.get(proxyRequest);
-    } catch (err) {
-        this.status = err.status || 500;
-        this.body = {
-          status: 'error',
-          statusCode: err.status,
-          message: err.message
-        };
-        return;
-    }
-
-    console.log(result.body);
-
-    // var res = yield pipeRequest(this.req, request(opt));
-
-};
-
-function pipeRequest(readable, requestThunk){
-  return function(cb){
-    readable.pipe(requestThunk(cb));
+  try{
+      this.body = yield proxy('','http://127.0.0.1:100/isExist', this);
+  }catch(e){ 
+      console.log('1111111111111');
   }
+
 };
