@@ -1,28 +1,13 @@
 var app = require('koa')();
-
-var path = require('path');
 var assets = require('koa-static');
-var swig = require('swig');
+var errorhandler = require('koa-errorhandler');
 var router = require('./routes/router');
 
-const viewsSettings = {
-	autoescape: true,
-	root: path.join(__dirname, 'views'),
-	cache: 'memory',
-	ext: 'swig'
-	/*
-	locals: {},
-	filters: {}.
-	tags: {},
-	extensions: {}
-	*/
-};
+app.keys = [process.env.keys || 'boa manager'];
 
-// views
-// app.use(swig(viewsSettings));
-// app.use(function *() {
-//   yield* this.render('layout');
-// });
+// error handle
+app.use(errorhandler());
+
 // assets
 app.use(assets(__dirname + '/assets'));
 // routes

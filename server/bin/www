@@ -10,7 +10,7 @@ let server, io
 
 server = http.Server(app.callback());
 io = socketIo(server);
-server.listen(99, function () {
-	console.log("Server at http://127.0.0.1:"+99+", press [CTRL+C] to stop server");
+server.listen(100, function () {
+	console.log("Server at http://127.0.0.1:"+100+", press [CTRL+C] to stop server");
 });
 

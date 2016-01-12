@@ -1,2 +1,0 @@
-# myBOD
-Marketing system
