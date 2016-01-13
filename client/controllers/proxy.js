@@ -78,13 +78,13 @@ module.exports.proxy = function *(prefix, target, self, mustContain) { // Only f
         
         self.body = {
             data: JSON.parse(result.body),
-            // data: {
-            //     ok:'ÊàêÂäü'
+			// data: {
+            //     ok:'≥…π¶'
             // },
             status: 'ok',
             statusCode: self.status
         };
-
+        console.log(self.body);
         self.response.set('Cache-Control','public, max-age=' + CACHETIME);
         self.response.set('Expires', (new Date((Math.floor(new Date().getTime() / 1000) + CACHETIME) * 1000)).toUTCString() );
         return;
