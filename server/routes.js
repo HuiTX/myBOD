@@ -6,7 +6,8 @@ router.get('/', function *(){
 });
 
 router.get('/isExist', User.isExist);
+router.post('/isExist', User.isExist);
 
-router.get('/testSql', User.testSql);
+router.post('/postLogin', User.postLogin);
 
 module.exports = router;

@@ -9,11 +9,15 @@ router.get('/', function *(){
     	return;
 	}
 
+	this.response.redirect('/login.html');
+    	return;
+
     this.body = yield render('index');
 });
 
 // member
 router.get('/login.html', Member.login);
 router.get('/isExist-user', Member.isExistUser);
+router.post('/postLogin', Member.postLogin);
 
 module.exports = router;

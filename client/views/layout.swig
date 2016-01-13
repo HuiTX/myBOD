@@ -8,7 +8,7 @@
 {% block style %}
 {% endblock %}
 </head>
-<body>
+<body id="app">
 
 {% block content %}
 <p>OOPs.... Missing content!</p>

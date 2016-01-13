@@ -4,7 +4,7 @@ var _ = require('lodash');
 // self function is a proxy to access other APIs
 // You define the prefix (in the app.use()) and the target,
 // it will match the routes for you and proxy the result back..
-module.exports.proxy = function *(prefix, target, self, mustContain) { // Only for GET method
+module.exports.proxy = function *(prefix, type, target, self, mustContain) { // Only for GET method
     if (_.startsWith(self.url, prefix)) {
         var CACHETIME = 180; // Set caching to minimise traffic to target
         var TIMEOUT = 5000;  // Set target connections to timeout after self many ms
@@ -36,14 +36,25 @@ module.exports.proxy = function *(prefix, target, self, mustContain) { // Only f
 
         var proxyRequest = {
             url: url,
-            headers: self.hearders,
+            headers: {'User-Agent': 'proxy'},
             encoding: null,
             timeout: TIMEOUT
         };
 
+        switch(type){
+            case 'post':
+                proxyRequest.method = 'POST';
+                proxyRequest.body = new Buffer(self.request.body)
+            break;
+            case 'get':
+            break;
+            default:
+            break;
+        }
+
         var result;
         try {
-            result = yield request.get(proxyRequest);
+            result = yield request(proxyRequest);
         } catch (err) {
             self.status = err.status || 500;
             self.body = {
@@ -75,12 +86,10 @@ module.exports.proxy = function *(prefix, target, self, mustContain) { // Only f
         if (contentDisposition) {
             self.response.set('Content-Disposition', contentDisposition);
         }
-        
+
+        var sBody = result.body.toString('utf8');
         self.body = {
-            data: JSON.parse(result.body),
-			// data: {
-            //     ok:'³É¹¦'
-            // },
+            data: JSON.parse(sBody),
             status: 'ok',
             statusCode: self.status
         };
