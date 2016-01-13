@@ -1,15 +1,16 @@
 var app = require('koa')();
-var assets = require('koa-static');
-var errorhandler = require('koa-errorhandler');
 var render = require('koa-swig');
+var assets = require('koa-static');
+var bodyParser = require('koa-bodyparser');
+var errorhandler = require('koa-errorhandler');
 var path = require('path');
 var router = require('./routes/router');
 
 app.keys = [process.env.keys || 'boa manager'];
 
-// error handle
+// handle
 app.use(errorhandler());
-
+app.use(bodyParser());
 // assets
 app.use(assets(__dirname + '/assets'));
 // views

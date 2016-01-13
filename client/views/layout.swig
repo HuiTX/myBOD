@@ -4,8 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{% block title %}Chat App{% endblock %}</title>
-<link rel="stylesheet" type="text/css" href="/layout.css">
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+{% block style %}
+{% endblock %}
 </head>
 <body>
 
@@ -13,8 +14,9 @@
 <p>OOPs.... Missing content!</p>
 {% endblock %}
 
-<script src="/socket.io/socket.io.js"></script>
-<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-<script src="/chatHelper.js"></script>
+<script src="/vendor/jquery/jquery.js"></script>
+<script src="/vendor/vue.js"></script>
+{% block script %}
+{% endblock %}
 </body>
 </html>

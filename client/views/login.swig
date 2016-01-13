@@ -1,8 +1,13 @@
-{% extends 'layout.html' %}
+{% extends 'layout.swig' %}
 {% block title %}登录页面{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="/vendor/validator/jquery.validator.css">
+{% endblock %}
+
 {% block content %}
 <div class="container">
-    <form class="form-signin" role="form" action="index.html">
+    <form id="login-form" class="form" action="/login">
         <h3 class="form-signin-heading">请登录</h3>
         <div class="form-group">
           <div class="input-group">
@@ -26,7 +31,13 @@
                 <input type="checkbox" style="position:relative;margin:0 5px 0 0;vertical-align:middle;" />记住我
             </label>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
     </form>
 </div>
+{% endblock %}
+
+{% block script %}
+<script src="/vendor/validator/jquery.validator.js"></script>
+<script src="/vendor/validator/local/zh_CN.js"></script>
+<script src="/js/member/login.js"></script>
 {% endblock %}

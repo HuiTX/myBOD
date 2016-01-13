@@ -14,6 +14,6 @@ router.get('/', function *(){
 
 // member
 router.get('/login.html', Member.login);
-router.get('/isExist', Member.isExist);
+router.get('/isExist-user', Member.isExistUser);
 
 module.exports = router;

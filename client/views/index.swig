@@ -1,4 +1,4 @@
-{% extends 'layout.html' %}
+{% extends 'layout.swig' %}
 {% block title %}Todo Tasks{% endblock %}
 {% block content %}
 <div class="container">
