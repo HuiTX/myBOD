@@ -1,23 +1,26 @@
 var Member = require('./member/member');
+var Customer = require('./customer/customer');
 var router = require('koa-router')();
-var render = require('./render');
+//var render = require('./render');
 
 /* GET home page. */
 router.get('/', function *(){
-	if (!this.session) {
-    	this.response.redirect('/login.html');
-    	return;
-	}
-
-	this.response.redirect('/login.html');
-    	return;
-
-    this.body = yield render('index');
+    //this.body = yield render('index');
+    this.response.redirect('/keyBusiness')
 });
 
 // member
-router.get('/login.html', Member.login);
+router.get('/login', Member.login);
 router.get('/isExist-user', Member.isExistUser);
 router.post('/postLogin', Member.postLogin);
+
+// Customer
+router.get('/customInfo', Customer.customInfo);
+router.get('/customList', Customer.customList);
+router.get('/majorInfo', Customer.majorInfo);
+router.get('/majorList', Customer.majorList);
+router.get('/competeInfo', Customer.competeInfo);
+router.get('/competeList', Customer.competeList);
+router.get('/keyBusiness', Customer.keyBusiness);
 
 module.exports = router;

@@ -9,7 +9,6 @@ exports.isExist = function *(){
 
     this.response.body = JSON.stringify(data);
     this.response.statusCode = 200;
-
 };
 
 exports.postLogin = function *(){
@@ -17,6 +16,5 @@ exports.postLogin = function *(){
     var sql = 'select * from user where username="bod"';
     var data = yield mysql(sql);
     console.log(data)
-    this.response.statusCode = 200;
-    
+    this.response.statusCode = 200;    
 };

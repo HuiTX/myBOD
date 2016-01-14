@@ -5,7 +5,7 @@ router.get('/', function *(){
 	console.log(11111111111111);
 });
 
-router.get('/isExist', User.isExist);
+router.get('/isExist-user', User.isExist);
 router.post('/isExist', User.isExist);
 
 router.post('/postLogin', User.postLogin);

@@ -6,8 +6,14 @@ var bodyParser = require('koa-bodyparser');
 var errorhandler = require('koa-errorhandler');
 var path = require('path');
 var router = require('./routes/router');
+var child_process = require('child_process');
 
 app.keys = [process.env.keys || 'boa manager'];
+
+// 启动gulp
+child_process.exec('gulp build-dev', {
+    cmd: process.cwd()
+});
 
 // handle
 app.use(errorhandler());
@@ -25,7 +31,8 @@ app.context.render = render({
 	cache: 'memory',
 	ext: 'swig'
 });
-// routes
+
+// router
 app.use(router.routes())
    .use(router.allowedMethods());
 

@@ -1,5 +1,5 @@
-{% extends 'layout.swig' %}
-{% block title %}登录页面{% endblock %}
+{% extends '../layout.swig' %}
+{% block title %}竞争对手列表{% endblock %}
 
 {% block style %}
 <link rel="stylesheet" type="text/css" href="/vendor/validator/jquery.validator.css">

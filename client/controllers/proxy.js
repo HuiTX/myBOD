@@ -1,38 +1,66 @@
+'use strict';
+
 var request = require('koa-request');
 var _ = require('lodash');
 
 // self function is a proxy to access other APIs
 // You define the prefix (in the app.use()) and the target,
 // it will match the routes for you and proxy the result back..
-module.exports.proxy = function *(prefix, type, target, self, mustContain) { // Only for GET method
-    if (_.startsWith(self.url, prefix)) {
+module.exports.proxy = function *(self, target, mustContain) { // Only for GET method
+    var self = self || null;
+    var prefix = 'http://127.0.0.1:100';
+    var target = target || self.url;
+    var url = '';
+
+    try{
+        prefix = process.env.proxy.host + process.env.proxy.port;
+    }catch(e){}
+
+    if (!_.isEmpty(self)) {
         var CACHETIME = 180; // Set caching to minimise traffic to target
         var TIMEOUT = 5000;  // Set target connections to timeout after self many ms
 
-        var url = target || self.url.substr(prefix.length);
+        // if target is exists
+        if(!_.isEmpty(target)){
+            let pattern = /^(https|http|ftp):\/\//;
 
-        // If we have no target, then we expect the target to be supplied, URI encoded
-        if ((typeof target !== 'string') || (target === '')){
-            url = decodeURIComponent(url);
-            url = url.replace(/^\/*/,''); // Strip leading slashes
-            target = '';
+            if(pattern.test(target)){
+                url = target;
+            }
+            else{
+                url = prefix + target;
+            }
         }
 
         // We need to check if there is a mustContain and that we match it if it exists
-        if ((typeof mustContain === 'string') && (!_.isEmpty(mustContain)) ) {
-            if (url.search(mustContain) === -1) {
-                self.body = {
-                    status: 'error',
-                    message: "Invalid URI supplied: '" +
-                             url +
-                             "' - missing '" +
-                             mustContain + "'",
-                    statusCode: 400
-                };
-                self.status = 400;
-                return;
+        if (!_.isEmpty(mustContain)) {
+            let pattern = /#/;
+
+            if(typeof mustContain !== 'string'){
+                mustContain = JSON.stringify(mustContain);
+            }
+            
+            let urlTmp = url.split(pattern)[0];
+            if(/\?/.test(urlTmp)){
+                url = urlTmp + '&data=' + mustContain;
+            }else{
+                url = urlTmp + '?data=' + mustContain;
+            }
+
+            // check '#' is exists
+            if(urlTmp.length > 1){
+                for(let i=1;i<urlTmp.length;i++){
+                    url = url + '#' + urlTmp[i];
+                }
             }
         }
+console.log(url);
+        // If we have no target, then we expect the target to be supplied, URI encoded
+        // if ((typeof target !== 'string') || (target === '')){
+        //     url = decodeURIComponent(url);
+        //     url = url.replace(/^\/*/,''); // Strip leading slashes
+        //     target = '';
+        // }
 
         var proxyRequest = {
             url: url,
@@ -40,21 +68,10 @@ module.exports.proxy = function *(prefix, type, target, self, mustContain) { // 
             encoding: null,
             timeout: TIMEOUT
         };
-
-        switch(type){
-            case 'post':
-                proxyRequest.method = 'POST';
-                proxyRequest.body = new Buffer(self.request.body)
-            break;
-            case 'get':
-            break;
-            default:
-            break;
-        }
-
+console.log(url);
         var result;
         try {
-            result = yield request(proxyRequest);
+            result = yield request.get(proxyRequest);
         } catch (err) {
             self.status = err.status || 500;
             self.body = {
@@ -65,7 +82,7 @@ module.exports.proxy = function *(prefix, type, target, self, mustContain) { // 
             self.app.emit('error', err, self);
             return;
         }
-
+console.log('bbbbb');
         if (result.statusCode !== 200) {
             self.status = result.statusCode || 500;
             self.body = {
