@@ -1,9 +1,12 @@
 //var render = require('../render');
 var proxy = require('../../controllers/proxy').proxy;
+var jwt = require('jsonwebtoken');
+var uuid = require('node-uuid');
 
 exports.login = function *(){
-	console.log(2222222222222222);
-  this.body = yield this.render('member/login');
+	//var token = jwt.sign({ name: 'bod' }, 'shhhhh');
+	console.log(uuid.v1());
+  	this.body = yield this.render('member/login');
 };
 
 exports.isExistUser = function *(next){

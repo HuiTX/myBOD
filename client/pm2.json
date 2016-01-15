@@ -16,6 +16,16 @@
 	    	"viewExt": "swig",
 	    	"cache": true
 	    },
+	    "token":{
+	        "ACCESS":{
+	            "key":"test",
+	            "expires": 24*60
+	        },
+	        "REFRESH":{
+	            "key":"test",
+            	"expires": 24*60
+        	}
+    	},
 	    "keys": "boa manager"
 	  },
 	"watch": true

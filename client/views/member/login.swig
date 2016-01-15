@@ -8,7 +8,7 @@
 {% block content %}
 <div class="container">
     <form id="login-form" class="form" method="post" action="/postLogin">
-        <h3 class="form-signin-heading">请登录</h3>
+        <h3 class="form-signin-heading">登录</h3>
         <div class="form-group">
           <div class="input-group">
             <div class="input-group-addon">

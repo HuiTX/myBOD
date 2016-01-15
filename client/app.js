@@ -28,7 +28,7 @@ app.use(assets(__dirname + '/assets'));
 // views
 app.context.render = render({
 	root: path.join(__dirname, 'views'),
-	cache: 'memory',
+	cache: false,
 	ext: 'swig'
 });
 
@@ -37,7 +37,7 @@ app.use(router.routes())
    .use(router.allowedMethods());
 
 app.on('error', function(err){
-  log.error('server error', err);
+  	log.error('server error', err);
 });
 
 module.exports = app;
