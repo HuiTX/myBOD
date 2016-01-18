@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var gutil = require('gulp-util');
-// var webpack = require('webpack');
-// var webpackConfig = require('./webpack.config');
+var webpack = require('webpack');
+var webpackConfig = require('./webpack.config');
 var clean = require('gulp-clean');
 var sourcemaps = require('gulp-sourcemaps');
 var concat = require('gulp-concat');
@@ -22,10 +22,13 @@ gulp.task("clean", function () {
     .pipe(clean({force: true}));
 });
 
-gulp.task('build-dev', ['css:build-dev'], function () {
+gulp.task('build-dev', ['css:build-dev', 'webpack:build-dev'], function () {
   gulp.watch([
     'assets/css/**/*.css'
   ], ['css:build-dev']);
+  gulp.watch([
+    'assets/js/**/*.js'
+  ], ['webpack:build-dev']);
 });
 
 // develop
@@ -62,7 +65,7 @@ gulp.task('css:build-dev', function () {
 //     .pipe(gulp.dest('dist/js'));
 // });
 
-/*
+
 // modify some webpack config options
 var devConfig = Object.create(webpackConfig);
 devConfig.devtool = 'sourcemap';
@@ -80,7 +83,7 @@ gulp.task('webpack:build-dev', function(callback) {
     callback();
   });
 });
-*/
+
 
 /**
  * @private

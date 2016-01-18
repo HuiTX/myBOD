@@ -2,7 +2,7 @@
 {% block title %}登录页面{% endblock %}
 
 {% block style %}
-<link rel="stylesheet" type="text/css" href="/vendor/validator/jquery.validator.css">
+{# <link rel="stylesheet" type="text/css" href="/vendor/validator/jquery.validator.css"> #}
 {% endblock %}
 
 {% block content %}
@@ -37,7 +37,7 @@
 {% endblock %}
 
 {% block script %}
-<script src="/vendor/validator/jquery.validator.js"></script>
+{# <script src="/vendor/validator/jquery.validator.js"></script>
 <script src="/vendor/validator/local/zh_CN.js"></script>
-<script src="/js/member/login.js"></script>
+<script src="/js/member/login.js"></script> #}
 {% endblock %}

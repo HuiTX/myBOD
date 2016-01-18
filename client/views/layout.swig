@@ -14,6 +14,7 @@
 <p>OOPs.... Missing content!</p>
 {% endblock %}
 
+{# <script src="/js/vendor.js"></script> #}
 <script src="/vendor/jquery/jquery.js"></script>
 <script src="/vendor/vue.js"></script>
 {% block script %}

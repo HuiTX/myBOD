@@ -1,3 +1,5 @@
+'use strict';
+
 var mysql = require('mysql');
 var wrapper = require('co-mysql');
 var co = require('co');

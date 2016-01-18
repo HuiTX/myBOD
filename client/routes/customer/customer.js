@@ -27,3 +27,14 @@ exports.competeList = function *(){
 exports.keyBusiness = function *(){
   this.body = yield this.render('index');
 };
+
+exports.upload = function *(){
+  this.body = yield this.render('customer/upload');
+};
+
+exports.uploadFile = function *(){
+  console.log(this.request);
+
+
+  //this.body = yield this.render('customer/upload');
+};

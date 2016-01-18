@@ -1,3 +1,5 @@
+'use strict';
+
 var app = require('koa')();
 var router = require('./routes');
 

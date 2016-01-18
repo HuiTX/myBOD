@@ -3,9 +3,12 @@ var mysql = require('./mysql');
 
 exports.isExist = function *(){
     console.log(this.request);
-    var data = {
-        'ok':'成功'
-    };
+    // var data = {
+    //     'ok':'成功'
+    // };
+
+    var sql = 'select * from user where username="bod"';
+    var data = yield mysql(sql);
 
     this.response.body = JSON.stringify(data);
     this.response.statusCode = 200;
