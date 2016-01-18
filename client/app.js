@@ -11,9 +11,9 @@ var child_process = require('child_process');
 app.keys = [process.env.keys || 'boa manager'];
 
 // 启动gulp
-// child_process.exec('gulp build-dev', {
-//     cmd: process.cwd()
-// });
+child_process.exec('gulp build-dev', {
+    cmd: process.cwd()
+});
 
 // handle
 app.use(errorhandler());

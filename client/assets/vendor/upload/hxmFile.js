@@ -170,7 +170,20 @@ var HXMFILE = {
 			var self = this;  // 在each中this指向没个v  所以先将this保留
 			
 			var formdata = new FormData();
-			formdata.append("fileList", file);	         		
+			formdata.append("file", file);
+
+			$.ajax({
+				url : self.url,  
+                type : 'POST',  
+                data : formdata,
+                contentType : false,
+                processData: false,
+                success:function(){
+
+                }
+			});
+
+			return;
 			var xhr = new XMLHttpRequest();
 			// 绑定上传事件
 			// 进度
@@ -197,7 +210,9 @@ var HXMFILE = {
 			
 			xhr.open("POST",self.url, true);
 			//xhr.setRequestHeader("X_FILENAME", file.name);
-			xhr.send(formdata);
+			xhr.setRequestHeader("If-Modified-Since", "0");
+			//xhr.send(formdata);
+			xhr.send('字符串');
 		},
 		// 返回需要上传的文件
 		funReturnNeedFiles : function(){

@@ -33,8 +33,11 @@ exports.upload = function *(){
 };
 
 exports.uploadFile = function *(){
-  console.log(this.request);
-
-
+    console.log(11111111111111111111);
+  console.log(this.res);
+  console.log(this.req.file);
+  console.log(this.req.files);
+  console.log(this.req.file);
+  console.log(this.req.files);
   //this.body = yield this.render('customer/upload');
 };
