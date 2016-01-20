@@ -211,8 +211,7 @@ var HXMFILE = {
 			xhr.open("POST",self.url, true);
 			//xhr.setRequestHeader("X_FILENAME", file.name);
 			xhr.setRequestHeader("If-Modified-Since", "0");
-			//xhr.send(formdata);
-			xhr.send('字符串');
+			xhr.send(formdata);
 		},
 		// 返回需要上传的文件
 		funReturnNeedFiles : function(){

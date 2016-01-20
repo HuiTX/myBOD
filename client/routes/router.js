@@ -22,6 +22,7 @@ router.get('/majorList', Customer.majorList);
 router.get('/competeInfo', Customer.competeInfo);
 router.get('/competeList', Customer.competeList);
 router.get('/keyBusiness', Customer.keyBusiness);
+router.post('/keyBusiness/:key', Customer.keyBusinessForm);
 router.get('/upload', Customer.upload);
 router.post('/upload/:file', Customer.uploadFile);
 

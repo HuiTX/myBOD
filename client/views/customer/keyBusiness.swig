@@ -7,7 +7,7 @@
 
 {% block content %}
 <div class="container">
-    <form id="login-form" class="form" method="post" action="/postLogin">
+    <form id="login-form" class="form" method="post" action="/keyBusiness/&key">
         <h3 class="form-signin-heading">请登录</h3>
         <div class="form-group">
           <div class="input-group">
@@ -37,7 +37,7 @@
 {% endblock %}
 
 {% block script %}
-<script src="/vendor/validator/jquery.validator.js"></script>
+{# <script src="/vendor/validator/jquery.validator.js"></script>
 <script src="/vendor/validator/local/zh_CN.js"></script>
-<script src="/js/member/login.js"></script>
+<script src="/js/member/login.js"></script> #}
 {% endblock %}

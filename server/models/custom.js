@@ -1,6 +1,7 @@
 'use strict';
 
 var request = require('co-request');
+var fs = require('fs');
 var mysql = require('./mysql');
 
 exports.createTable = function *(){
@@ -35,4 +36,28 @@ exports.createTable = function *(){
 };
 
 exports.customInfo = function *(){
+};
+
+exports.customUpload = function *(){
+    console.log(1111111111);
+    console.log(this.request.header.files);
+    var filestreams = this.request.header.files.toString('utf8');
+    filestreams = JSON.parse(filestreams)
+
+    var path = process.cwd() + '/upload' + '/test01.jpg';
+
+    fs.writeFile(path, filestreams._readableState.buffer, 'utf-8', function (err) {
+        if (err) throw err;
+        console.log('It\'s saved!');
+    });
+    //console.log(filestreams);
+    // var data = {
+    //     'ok':'成功'
+    // };
+
+    // var sql = 'select * from user where username="bod"';
+    // var data = yield mysql(sql);
+
+    // this.response.body = JSON.stringify(data);
+    // this.response.statusCode = 200;
 };

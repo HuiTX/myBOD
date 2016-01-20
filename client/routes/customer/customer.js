@@ -25,7 +25,17 @@ exports.competeList = function *(){
 };
 
 exports.keyBusiness = function *(){
-  this.body = yield this.render('index');
+  this.body = yield this.render('customer/keyBusiness');
+};
+
+exports.keyBusinessForm = function *(){
+  var form = new multiparty.Form();
+  form.parse(this.req, function(err, fields, files) {
+    console.log(err);
+    console.log(fields);
+    console.log(files);
+
+  });
 };
 
 exports.upload = function *(){
@@ -33,11 +43,5 @@ exports.upload = function *(){
 };
 
 exports.uploadFile = function *(){
-    console.log(11111111111111111111);
-  console.log(this.res);
-  console.log(this.req.file);
-  console.log(this.req.files);
-  console.log(this.req.file);
-  console.log(this.req.files);
-  //this.body = yield this.render('customer/upload');
+    this.body = yield proxy(this);
 };
