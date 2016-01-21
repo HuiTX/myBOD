@@ -1,0 +1,13 @@
+.visit-nav .nav-list a{
+    padding: 0;
+}
+.visit-nav .active:after{
+    content: '';
+    width: 100px;
+    height: 2px;
+    margin-left: -50px;
+    position: absolute;
+    left: 50%;
+    bottom: -1px;
+    border-bottom: 2px solid #0fa3df;
+}

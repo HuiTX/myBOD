@@ -1,0 +1,118 @@
+
+.section .customer-basic{
+    display: block;
+    margin: 0 -10px;
+}
+.section .labels {
+    margin: 10px 0;
+    padding: 0;
+}
+
+.section .labels li {
+    display: inline-block;
+    padding: 0 10px;
+    border: 1px solid #0fa3df;
+    margin: 0 5px 5px 0;
+    line-height: 22px;
+}
+
+.section .labels .l-bus {
+    border-color: #C70303;
+}
+
+.section .more {
+    display: block;
+    line-height: 45px;
+    font-size: 14px;
+    text-align: right;
+    padding-right: 40px;
+    border-top: 1px solid #ddd;
+}
+.principal-list{
+    padding: 0 10px 5px;
+}
+.detail-box{
+    border:1px solid #ddd;
+    margin: 0 -10px 10px;
+    padding: 10px;
+}
+.detail-box .name,.detail-box .tel,.detail-box .role,.detail-box .company-name,.detail-box .advantage{
+    display: block;
+    padding-left: 25px;
+    line-height: 24px;  
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.detail-box .name{
+    font-size: 16px;  
+    background: url(/img/icon_01.png) 0 4px no-repeat;
+    background-size: 16px;
+}
+.detail-box .tel{
+    position: relative;
+    font-size: 16px;  
+    color: #0fa3df;
+    padding: 5px 0 10px 25px;
+    margin-bottom: 5px;
+    background: url(/img/icon_02.png) 0 10px no-repeat;
+    background-size: 16px;
+    z-index: 2;
+}
+.detail-box .tel:after{
+    content: '';
+    height: 2px;
+    width: 102px;
+    border-bottom: 1px dashed #0fa3df;
+    position: absolute;
+    bottom: 8px;
+    left: 26px;
+    z-index: 1;
+}
+.detail-box .role{
+    background: url(/img/icon_03.png) 0 4px no-repeat;
+    background-size: 14px;
+}
+.detail-box .company-name,.detail-box .advantage{
+    line-height: 22px;
+    white-space: normal;
+    height: 45px;
+}
+.detail-box .company-name{
+    background: url(/img/icon_04.png) 0 4px no-repeat;
+    background-size: 14px;
+}
+.detail-box .advantage{
+    margin-top: 5px;
+    background: url(/img/icon_05.png) 0 4px no-repeat;
+    background-size: 16px;
+}
+
+
+
+.btn-box{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin-top: 20px;
+}
+@media screen and (min-width: 992px){
+    .btn-box {
+        position: relative;
+    }
+}
+.btn-box a{
+    float: left;
+    width: 50%;
+    height: 40px;
+    font-size: 16px;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+    background: #C70303;
+}
+.btn-box a:first-child{
+    background: #0fa3df;
+}

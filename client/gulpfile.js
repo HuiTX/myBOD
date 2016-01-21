@@ -22,13 +22,16 @@ gulp.task("clean", function () {
     .pipe(clean({force: true}));
 });
 
-gulp.task('build-dev', ['css:build-dev', 'webpack:build-dev'], function () {
+gulp.task('build-dev', ['css:build-dev', 'vendor:build-dev', 'js:build-dev'], function () {
   gulp.watch([
     'assets/css/**/*.css'
   ], ['css:build-dev']);
   gulp.watch([
+    'assets/vendor/**/*.js'
+  ], ['vendor:build-dev']);
+  gulp.watch([
     'assets/js/**/*.js'
-  ], ['webpack:build-dev']);
+  ], ['js:build-dev']);
 });
 
 // develop
@@ -54,17 +57,20 @@ gulp.task('css:build-dev', function () {
 });
 
 // script
-// gulp.task('js:build-dev', function () {
-//   return gulp.src([
-//       'assets/vendor/jquery/jquery.js',
-//       // 'assets/vendor/bootstrap/js/bootstrap.js',
-//       'assets/vendor/semantic/semantic.min.js',
-//       'assets/vendor/vue/vue.js'
-//     ])
-//     .pipe(concat('vendor.js'))
-//     .pipe(gulp.dest('dist/js'));
-// });
-
+gulp.task('vendor:build-dev', function () {
+  return gulp.src([
+      'assets/vendor/jquery/jquery.js',
+      'assets/vendor/vue.js'
+    ])
+    .pipe(concat('vendor.js'))
+    .pipe(gulp.dest('dist/js'));
+});
+gulp.task('js:build-dev', function () {
+  return gulp.src([
+      'assets/js/custom/custom.js'
+    ])
+    .pipe(gulp.dest('dist/js'));
+});
 
 // modify some webpack config options
 var devConfig = Object.create(webpackConfig);

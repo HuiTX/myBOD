@@ -2,7 +2,8 @@
 
 var request = require('koa-request');
 var formidable = require('koa-formidable');
-var fs = require('fs');
+var fs = require('co-fs');
+var path = require('path');
 var httpOrhttps = require('http');
 var _ = require('lodash');
 
@@ -61,20 +62,26 @@ module.exports.proxy = function *(self, target, mustContain, token) { // Only fo
             }
         }
 
-        if (!_.isEmpty(self.request.body)) {}
+        if (!_.isEmpty(self.request.body)) {
+            HEADERS['body'] = self.request.body;
+        }
 
         // If file-type
         if (HEADERS['content-type'].toLowerCase().indexOf('multipart/') >= 0) {
-            var form = yield formidable.parse(self);
-            console.log(form);
-            console.log(1111111111);
-            console.log(form.files);
-            console.log(1111111111);
-            console.log(form.files.file);
-            console.log(1111111111);
-            console.log(form.files.file.file);
-            console.log(1111111111);
-            form.files.file && (HEADERS.files = new Buffer(JSON.stringify(form.files)))
+            var Path = process.cwd() + '/dist/upload/';
+            var temp = Path + 'temp/';
+            var form = yield formidable.parse({
+                uploadDir : temp,
+                encoding  : 'utf-8'
+            },self);
+
+            HEADERS['filesname'] = form.files.file.name;
+            HEADERS['filespath'] = form.files.file.path;
+            HEADERS['filestemp'] = temp;
+            
+            var stream = yield fs.createReadStream(form.files.file.path);
+            form.files.file && (HEADERS['files'] = stream.toString('base64'));
+            //var _file = yield fs.writeFile((Path + form.files.file.name), test);
         }
 
         var proxyRequest = {
@@ -85,8 +92,7 @@ module.exports.proxy = function *(self, target, mustContain, token) { // Only fo
         };
 
         var result;
-        try {
-            
+        try {            
             result = yield request.get(proxyRequest);
         } catch (err) {
             self.status = err.status || 500;
@@ -98,6 +104,8 @@ module.exports.proxy = function *(self, target, mustContain, token) { // Only fo
             self.app.emit('error', err, self);
             return;
         }
+
+        console.log(result);
 
         if (result.statusCode !== 200) {
             self.status = result.statusCode || 500;
@@ -126,7 +134,7 @@ module.exports.proxy = function *(self, target, mustContain, token) { // Only fo
             status: 'ok',
             statusCode: self.status
         };
-        console.log(self.body);
+
         self.response.set('Cache-Control','public, max-age=' + CACHETIME);
         self.response.set('Expires', (new Date((Math.floor(new Date().getTime() / 1000) + CACHETIME) * 1000)).toUTCString() );
         return;

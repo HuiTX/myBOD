@@ -1,0 +1,48 @@
+.basic-main {
+    position: relative;
+    overflow: hidden;
+    margin-top: 10px;
+    padding: 10px;
+    background: #fff
+}
+
+.basic-main .name {
+    font-weight: bold;
+    padding: 0px 0 15px;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.basic-main ul li {
+    padding: 5px;
+    margin-bottom: 5px;
+    border: 1px dashed #ddd;
+}
+
+.basic-main ul li .glyphicon {
+    margin-right: 10px;
+    color: #0fa3df;
+    top: 4px;
+}
+
+.basic-list {
+    margin: 0 5px;
+}
+
+.basic-list li {
+    border-bottom: 1px solid #f2f2f2;
+    padding: 8px 0;
+}
+
+.basic-list li .word {
+    padding-left: 2px;
+}
+
+.all-btn {
+    padding: 20px 0;
+    text-align: center;
+}
+
+.all-btn .glyphicon {
+    margin-left: 10px;
+}

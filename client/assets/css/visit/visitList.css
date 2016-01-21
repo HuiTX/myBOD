@@ -1,0 +1,25 @@
+.visit-list li{
+    margin-bottom: 10px;
+    background: #fff;
+    padding: 10px 10px 5px;
+}
+.visit-main{
+    width: 100%;
+    display: -webkit-box;
+}
+.visit-main .visited{
+    -webkit-box-flex: 1;
+}
+.visit-main .time{
+    display: inline-block;
+    width: 70px;
+    font-size: 12px;
+    color: #999;
+    text-align: right;
+    -webkit-box-flex: 1;
+}
+.visit-list li .major{
+    border-top:1px dashed #f2f2f2;
+    line-height:30px;
+    margin-top:10px;
+}

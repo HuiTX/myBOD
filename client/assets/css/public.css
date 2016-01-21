@@ -1,0 +1,263 @@
+@charset "utf-8";
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    background: #f2f2f2;
+}
+
+a,
+a:focus,
+a:hover {
+    color: #333;
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+ol,
+ul,
+li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.pb60 {
+    padding-bottom: 60px;
+}
+
+.banner {
+    position: relative;
+}
+
+.banner img {
+    width: 100%;
+}
+
+.banner .button {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    font-size: 15px;
+    line-height: 30px;
+    padding: 0 10px;
+    background: rgba(255, 0, 0, 0.5);
+    color: #fff;
+    border-radius: 10px;
+}
+
+.banner .button .glyphicon {
+    top: 2px;
+    margin-right: 5px;
+}
+
+.banner .name {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 25px 90px 10px 10px;
+    background: rgba(0, 0, 0, 0.5);
+    background: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(0, 0, 0, 0.01)), to(rgba(0, 0, 0, 0.8)));
+    font-size: 16px;
+    color: #fff;
+}
+
+.nav {
+    height: 60px;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.nav-list {
+    position: relative;
+    height: 100%;
+    text-align: center;
+    line-height: 60px;
+    font-size: 20px;
+}
+
+.nav-list:first-child {
+    border-right: 1px solid #ddd;
+}
+
+.nav .nav-list a {
+    padding-left: 40px;
+}
+
+.nav .icon-visit,
+.nav .icon-info {
+    display: inline-block;
+    width: 30px;
+    height: 20px;
+    margin: -10px 0 0 -65px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+
+.nav .icon-info {
+    background: url(/img/icon_visitrecord_gray.png) no-repeat;
+    background-size: contain;
+}
+
+.nav .active .icon-info {
+    background: url(/img/icon_visitrecord_blue.png) no-repeat;
+    background-size: contain;
+}
+
+.nav .icon-visit {
+    background: url(/img/icon_customersInfo_gray.png) no-repeat;
+    background-size: contain;
+}
+
+.nav .active .icon-visit {
+    background: url(/img/icon_customersInfo_blue.png) no-repeat;
+    background-size: contain;
+}
+
+.nav .active a {
+    color: #0fa3df;
+}
+
+
+/*关键商机*/
+
+.icon-business {
+    position: absolute;
+    top: -8px;
+    right: -15px;
+    width: 91px;
+    height: 55px;
+    background: url(/img/business.png) no-repeat;
+    background-size: contain;
+}
+
+
+/*状态栏*/
+
+.status-bar {
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background: #0fa3df;
+    color: #fff;
+    font-size: 16px;
+    padding-right: 40px;
+}
+
+.status-bar .goback {
+    float: left;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+}
+
+.status-bar .goback span {
+    color: #fff;
+    font-size: 20px;
+    line-height: 36px;
+}
+
+.section {
+    margin-top: 10px;
+    background: #fff;
+    border-width: 1px 0;
+    padding: 0 5px;
+}
+
+.section .title {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 30px;
+    border-bottom: 1px solid #f2f2f2;
+    margin: 5px -10px 10px;
+}
+
+.section .title a {
+    display: block;
+}
+
+.section .title span {
+    float: right;
+    color: #ccc;
+    top: 5px;
+}
+
+.display-box-li li {
+    display: -webkit-box;
+}
+
+.display-box-li li .word {
+    display: inline-block;
+    width: 100px;
+    padding-right: 10px;
+    color: #777;
+    font-weight: normal;
+    -webkit-box-flex: 1;
+}
+
+.display-box-li li .control {
+    -webkit-box-flex: 1;
+}
+
+.display-box-li li .glyphicon {
+    float: right;
+    color: #ccc;
+    top: 12px;
+}
+
+.edit-btn {
+    padding: 20px 0;
+    text-align: center;
+}
+
+.edit-btn .btn:first-child {
+    margin-right: 10px;
+}
+
+.edit-btn .btn {
+    padding: 6px 16px;
+}
+
+
+/*bootstrap*/
+
+.btn-primary.active.focus,
+.btn-primary.active:focus,
+.btn-primary.active:hover,
+.btn-primary:active.focus,
+.btn-primary:active:focus,
+.btn-primary:active:hover,
+.open>.dropdown-toggle.btn-primary.focus,
+.open>.dropdown-toggle.btn-primary:focus,
+.open>.dropdown-toggle.btn-primary:hover,
+.btn-primary,
+.btn-primary:hover,
+.btn-primary.active,
+.btn-primary:active,
+.open>.dropdown-toggle.btn-primary {
+    background-color: #0fa3df;
+    border-color: #0fa3df;
+}
+
+.glyphicon-rmb:before {
+    content: "￥";
+    font-size: 18px;
+    font-weight: bolder;
+    line-height: 1px;
+    margin-left: -3px;
+}

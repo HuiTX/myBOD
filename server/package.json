@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node-dev index.js",
+    "test": "node-debug index.js",
     "dev": "NODE_ENV=development NODE_HOST=127.0.0.1 NODE_PORT=9001 DB_HOST=192.168.79.209 DB_USER=bod_user DB_PASS=UCS69PkQ node-dev index.js",
     "dev-local": "NODE_ENV=development NODE_HOST=127.0.0.1 NODE_PORT=9001 DB_HOST=127.0.0.1 DB_USER=root DB_PASS=1 node-dev index.js",
     "debug-local": "NODE_ENV=development NODE_HOST=127.0.0.1 NODE_PORT=9001 DB_HOST=127.0.0.1 DB_USER=root DB_PASS=1 node-debug index.js"

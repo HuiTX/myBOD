@@ -29,13 +29,13 @@ exports.keyBusiness = function *(){
 };
 
 exports.keyBusinessForm = function *(){
-  var form = new multiparty.Form();
-  form.parse(this.req, function(err, fields, files) {
-    console.log(err);
-    console.log(fields);
-    console.log(files);
+  // var form = new multiparty.Form();
+  // form.parse(this.req, function(err, fields, files) {
+  //   console.log(err);
+  //   console.log(fields);
+  //   console.log(files);
 
-  });
+  // });
 };
 
 exports.upload = function *(){
@@ -44,4 +44,12 @@ exports.upload = function *(){
 
 exports.uploadFile = function *(){
     this.body = yield proxy(this);
+};
+
+exports.customBasic = function *(){
+  this.body = yield this.render('customer/customBasic');
+};
+
+exports.editCustomer = function *(){
+  this.body = yield this.render('customer/editCustomer');
 };

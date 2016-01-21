@@ -12,7 +12,6 @@ const routes = require('./src/routes');
 const host = constants.application['host'];
 const port = constants.application['port'];
 const db = constants.database;
-const Store = require('./src/util/store');
 
 // create server
 const server = new Hapi.Server();
@@ -69,4 +68,3 @@ server.start(() => {
       chalk.green(db.database)));
 });
 
-Store.set({a:1});

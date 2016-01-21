@@ -1,0 +1,38 @@
+/*@import url(../css/public.css);*/
+.login {
+    /*width: 100%;*/
+    height: 100%;
+    background: #30425a;
+    overflow: hidden;
+
+}
+
+.l-logo {
+    height: 40%;
+    background: url(/img/logo.png) center no-repeat;
+}
+
+/*bootstrap*/
+.form-control,.input-group-addon{
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.input-group-addon .glyphicon{
+    color: #fff;
+}
+.form-control{
+    color: #fff;
+}
+.form-control:focus{
+    box-shadow: none;
+    border-color: rgba(255, 255, 255, 0.15);
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.checkbox{
+    font-weight: normal;
+    color: #fff;
+    font-size: 14px;
+    margin-left: 20px;
+}

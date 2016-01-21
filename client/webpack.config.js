@@ -4,9 +4,10 @@ var webpack = require('webpack');
 module.exports = {
   cache: true,
   entry: {
-    vendor: ['./assets/vendor/jquery/jquery.js', './assets/vendor/vue.js'],
-    // bootstrap: ['bootstrap-sass!./bs-sass.config.js'],
-    // login: './assets/js/member/login.js'
+    // vendor: ['./assets/vendor/jquery/jquery.js', './assets/vendor/vue.js'],
+    // custom: ['./assets/js/custom/custom.js']
+    // // bootstrap: ['bootstrap-sass!./bs-sass.config.js'],
+    // // login: './assets/js/member/login.js'
   },
   output: {
     path: 'dist/js',
@@ -15,6 +16,15 @@ module.exports = {
     // chunkFilename: '[chunkhash].js'
   },
   plugins: [
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      Vue: 'vue'
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      chunks: ['vendor']
+    })
   ],
   module: {
     loaders: [

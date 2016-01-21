@@ -1,0 +1,149 @@
+
+
+
+/*todo*/
+
+
+/*.client-classify-title{
+    position: relative;
+    line-height: 40px;
+    font-size: 16px;
+    padding-left: 10px;
+    font-weight: bold;
+    
+}
+.client-classify-title:after{
+    content: '';
+    display: inline-block;
+    position: absolute;
+    left: -5px;
+    top: 10px;
+    width: 2px;
+    height: 20px;
+    background: #0fa3df;
+}
+.client-classify-title a{
+    float: right;
+    font-weight: normal;
+    font-size: 14px;
+    color: #FF8601;
+    line-height: 26px;
+    padding: 0 10px;
+    background: linear-gradient(#fff, #DCD9D9);
+    border:1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 6px;
+}*/
+
+.company-list {
+    padding: 5px;
+    background: #fff;
+    margin-bottom: 10px;
+}
+
+.client-classify {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    text-align: center;
+}
+
+.client-classify span {
+    position: relative;
+    z-index: 1;
+    padding: 0 10px;
+    line-height: 60px;
+    font-size: 18px;
+    background: #f2f2f2;
+}
+
+.client-classify:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    display: inline-block;
+    width: 100%;
+    height: 1px;
+    background: #9fa1aa;
+    background: linear-gradient(to right, rgba(0, 0, 0, .001), rgba(0, 0, 0, .5), rgba(0, 0, 0, .001));
+}
+
+.more-btn {
+    text-align: right;
+    padding: 10px 0;
+}
+
+.more-btn .btn {
+    padding: 6px 0 6px 10px;
+    margin-right: 10px;
+}
+
+.more-btn .glyphicon {
+    font-size: 12px;
+    top: 0;
+}
+
+.more-btn .glyphicon:last-child {
+    left: -6px;
+}
+
+.company-info {
+    position: relative;
+    overflow: hidden;
+    margin: 5px -10px;
+    padding: 5px;
+    background: #fff;
+    border-radius: 5px;
+    border: 1px solid rgba(15, 163, 223, 0.5);
+    overflow: hidden;
+}
+
+.company-info p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.company-info .company-name {
+    font-weight: bold;
+    padding: 10px 0 5px;
+}
+
+.company-info .company-add,
+.company-info .company-logo {
+    width: 100%;
+    height: 110px;
+    overflow: hidden;
+}
+
+.company-info .company-logo img {
+    width: 100%;
+}
+
+.company-info .company-add {
+    width: 100%;
+    height: 165px;
+    overflow: hidden;
+    background: rgba(15, 163, 223, 0.2);
+    text-align: center;
+}
+
+.company-add .rectangle {
+    display: inline-block;
+    width: 6px;
+    height: 60px;
+    background: #0fa3df;
+    margin-top: 26px;
+}
+
+.company-add .rectangle-vertical {
+    transform: rotate(90deg);
+    margin: 0 0 0 -6px;
+}
+
+.company-add p {
+    font-size: 18px;
+    color: #0fa3df;
+    line-height: 72px;
+}
