@@ -28,7 +28,16 @@ ReplyHelper.prototype.find = function(err, data) {
 
   this.reply({
     'items': data
-  });
+  }).type('application/json');
+};
+
+// replay
+ReplyHelper.prototype.insert = function(err, data) {
+  if (err) {
+    return this.reply(Boom.badImplementation(err));
+  }
+
+  this.reply(data).code(201).type('application/json');
 };
 
 module.exports = ReplyHelper;

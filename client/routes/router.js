@@ -29,6 +29,8 @@ router.post('/keyBusiness/:key', Customer.keyBusinessForm);
 router.get('/upload', Customer.upload);
 router.post('/upload/:file', Customer.uploadFile);
 
+router.get('/custom/get', Customer.customListGet);
+
 // Visit
 router.get('/visitList', Visit.visitList);
 router.get('/visitInfo', Visit.visitInfo);

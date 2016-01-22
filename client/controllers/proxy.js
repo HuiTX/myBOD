@@ -67,22 +67,25 @@ module.exports.proxy = function *(self, target, mustContain, token) { // Only fo
         }
 
         // If file-type
-        if (HEADERS['content-type'].toLowerCase().indexOf('multipart/') >= 0) {
-            var Path = process.cwd() + '/dist/upload/';
-            var temp = Path + 'temp/';
-            var form = yield formidable.parse({
-                uploadDir : temp,
-                encoding  : 'utf-8'
-            },self);
+        try{
+            if (HEADERS['content-type'].toLowerCase().indexOf('multipart/') >= 0) {
+                var Path = process.cwd() + '/dist/upload/';
+                var temp = Path + 'temp/';
+                var form = yield formidable.parse({
+                    uploadDir : temp,
+                    encoding  : 'utf-8'
+                },self);
 
-            HEADERS['filesname'] = form.files.file.name;
-            HEADERS['filespath'] = form.files.file.path;
-            HEADERS['filestemp'] = temp;
-            
-            var stream = yield fs.createReadStream(form.files.file.path);
-            form.files.file && (HEADERS['files'] = stream.toString('base64'));
-            //var _file = yield fs.writeFile((Path + form.files.file.name), test);
-        }
+                HEADERS['filesname'] = form.files.file.name;
+                HEADERS['filespath'] = form.files.file.path;
+                HEADERS['filestemp'] = temp;
+                
+                var stream = yield fs.createReadStream(form.files.file.path);
+                form.files.file && (HEADERS['files'] = stream.toString('base64'));
+                //var _file = yield fs.writeFile((Path + form.files.file.name), test);
+            }
+
+        }catch(e){}
 
         var proxyRequest = {
             url: url,
@@ -105,8 +108,6 @@ module.exports.proxy = function *(self, target, mustContain, token) { // Only fo
             return;
         }
 
-        console.log(result);
-
         if (result.statusCode !== 200) {
             self.status = result.statusCode || 500;
             self.body = {
@@ -128,7 +129,8 @@ module.exports.proxy = function *(self, target, mustContain, token) { // Only fo
             self.response.set('Content-Disposition', contentDisposition);
         }
 
-        var sBody = result.body.toString('utf8');
+        var sBody = result.body.toString('utf-8');
+        console.log(sBody);
         self.body = {
             data: JSON.parse(sBody),
             status: 'ok',

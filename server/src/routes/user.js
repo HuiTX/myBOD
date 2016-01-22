@@ -15,5 +15,12 @@ module.exports = [
     config : {
       handler: userController.find
     }
+  },
+  { // new user
+    method: 'POST',
+    path: '/user',
+    config : {
+      handler: userController.insert
+    }
   }
 ];

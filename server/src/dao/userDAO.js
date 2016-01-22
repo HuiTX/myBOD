@@ -3,8 +3,10 @@
 const util = require('util');
 const db = require('../middleware/db');
 
+const UserDAO = function () {};
+
 // find by id
-exports.findByID = function (id, cb) {
+UserDAO.prototype.findByID = function (id, cb) {
   var sql = 'SELECT * FROM user AS u WHERE u.id = ?';
 
   db.query({
@@ -15,7 +17,7 @@ exports.findByID = function (id, cb) {
 };
 
 // find list
-exports.find = function (params, cb) {
+UserDAO.prototype.find = function (params, cb) {
   var sql = 'SELECT * FROM user LIMIT ?,?';
 
   db.query({
@@ -24,3 +26,33 @@ exports.find = function (params, cb) {
     callback: cb
   });
 };
+
+UserDAO.prototype.insert = function(params, cb) {
+  var values = [
+    // params.username,
+    // params.password
+  ];
+  var col = '';
+  var val = '';
+
+  for (var keyname in params) {
+    console.log(keyname);
+    col += ',' + keyname;
+    val += ', ?';
+    values.push(params[keyname]);
+  }
+
+  col = col.replace(/^\,/, '');
+  val = val.replace(/^\,/, '');
+
+  var sql = util.format('insert into custom (%s) values (%s)', col, val);
+
+  db.query({
+    sql : sql,
+    values: values,
+    callback : cb
+  });
+};
+
+const userDAO = new UserDAO();
+module.exports = userDAO;

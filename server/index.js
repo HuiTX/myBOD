@@ -48,7 +48,7 @@ server.ext('onPreResponse', function(request, reply){
                       statusCode));
   return reply.continue();
 });
-console.log(routes);
+
 // register routes
 for (var route in routes) {
   server.route(routes[route]);
@@ -65,6 +65,5 @@ server.start(() => {
     chalk.green(db.host),
     chalk.green(db.user),
     chalk.green(db.password),
-      chalk.green(db.database)));
+    chalk.green(db.database)));
 });
-

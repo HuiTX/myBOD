@@ -53,3 +53,7 @@ exports.customBasic = function *(){
 exports.editCustomer = function *(){
   this.body = yield this.render('customer/editCustomer');
 };
+
+exports.customListGet = function *(){
+  this.body = yield proxy(this);
+};

@@ -11,9 +11,16 @@ module.exports = [
   },
   { // find custom list
     method: 'GET',
-    path: '/custom',
+    path: '/custom/get',
     config : {
       handler: customController.find
+    }
+  },
+  { // find custom list
+    method: 'POST',
+    path: '/custom',
+    config : {
+      handler: customController.insert
     }
   }
 ];
