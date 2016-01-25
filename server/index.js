@@ -16,8 +16,7 @@ const db = constants.database;
 // create server
 const server = new Hapi.Server();
 server.connection({
-  port: port,
-  host: host
+  port: port
 });
 
 // add plugin

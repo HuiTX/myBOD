@@ -32,7 +32,8 @@ app.use(assets(__dirname + '/dist'));
 app.context.render = render({
 	root: path.join(__dirname, 'views'),
 	cache: false,
-	ext: 'swig'
+	ext: 'swig',
+	varControls: ['{$', '$}']
 });
 
 // router

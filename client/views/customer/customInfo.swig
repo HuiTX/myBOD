@@ -32,24 +32,24 @@
     <div class="row section">
         <div class="col-xs-12">
             <h2 class="title">
-                <a href="#">负责人<span class="glyphicon glyphicon-menu-right"></span></a>
+                <a href="/majorList">负责人<span class="glyphicon glyphicon-menu-right"></span></a>
             </h2>
         </div>
         <div class="col-xs-6 col-md-3">
-            <div class="detail-box">
-                <a href="#">
-                    <h6 class="name">李经理</h6>
-                    <a class="tel" href="tel:0592:2365235">0952:2641254</a>
-                    <p class="role">决策者</p>
+            <div class="major-list">
+                <a href="/majorInfo">
+                    <p class="name"><span class="glyphicon glyphicon-user"></span>李经理</p>
+                    <a class="tel" href="tel:0592:2365235"><span class="glyphicon glyphicon-earphone"></span>0952:2641254</a>
+                    <p class="role"><span class="glyphicon glyphicon-eye-open"></span>决策者</p>
                 </a>
             </div>
         </div>
         <div class="col-xs-6 col-md-3">
-            <div class="detail-box">
-                <a href="#">
-                    <h6 class="name">李经理</h6>
-                    <a class="tel" href="tel:15921052526">15921052526</a>
-                    <p class="role">决策者</p>
+            <div class="major-list">
+                <a href="/majorInfo">
+                    <p class="name"><span class="glyphicon glyphicon-user"></span>李经理</p>
+                    <a class="tel" href="tel:0592:2365235"><span class="glyphicon glyphicon-earphone"></span>0952:2641254</a>
+                    <p class="role"><span class="glyphicon glyphicon-eye-open"></span>决策者</p>
                 </a>
             </div>
         </div>
@@ -61,17 +61,17 @@
             </h2>
         </div>
         <div class="col-xs-6 col-md-3">
-            <div class="detail-box">
+            <div class="compete-list">
                 <a href="#">
-                    <h6 class="company-name">康师傅控股有限公司</h6>
+                    <p class="company-name">康师傅控股有限公司</p>
                     <p class="advantage">这里填与网龙相比对方的优势</p>
                 </a>
             </div>
         </div>
         <div class="col-xs-6 col-md-3">
-            <div class="detail-box">
+            <div class="compete-list">
                 <a href="#">
-                    <h6 class="company-name">康师傅控股有限公司</h6>
+                    <p class="company-name">康师傅控股有限公司</p>
                     <p class="advantage">这里填与网龙相比对方的优势</p>
                 </a>
             </div>

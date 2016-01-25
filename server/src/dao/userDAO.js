@@ -16,6 +16,17 @@ UserDAO.prototype.findByID = function (id, cb) {
   });
 };
 
+// find by id
+UserDAO.prototype.findByParam = function (param, cb) {
+  var sql = 'SELECT * FROM user AS u WHERE u.username = ?';
+
+  db.query({
+    sql: sql,
+    values: [param.username],
+    callback: cb
+  });
+};
+
 // find list
 UserDAO.prototype.find = function (params, cb) {
   var sql = 'SELECT * FROM user LIMIT ?,?';

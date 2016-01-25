@@ -1,6 +1,18 @@
-'use strict';
+(function($, vue) {
+    $.ajax({
+        url: '/custom/get?userid=1',
+        type: 'get',
+        success: function() {
 
-(function($, vue){
-	console.log($);
+        }
+    });
 
-})(jQuery, vue);
+    new Vue({
+        el: '#custom',
+        data: {
+            userid: '222'
+        }
+    })
+
+
+})(jQuery, Vue);

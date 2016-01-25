@@ -67,7 +67,7 @@ gulp.task('vendor:build-dev', function () {
 });
 gulp.task('js:build-dev', function () {
   return gulp.src([
-      'assets/js/custom/custom.js'
+      'assets/js/**/*.js'
     ])
     .pipe(gulp.dest('dist/js'));
 });

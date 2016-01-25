@@ -11,14 +11,12 @@ exports.login = function *(){
 
 exports.isExistUser = function *(next){
 	try{
-	    this.body = yield proxy(this);
+	    yield proxy(this, '/');
 	}catch(e){ 
 	    console.log('1111111111111');
 	}
 };
 
-exports.postLogin = function *(next){
-    console.log(this.request.body);
-    //console.log(this.req);
-    this.body = yield proxy(self);
+exports.loginUser = function *(next){
+    yield proxy(this, this.url);
 };

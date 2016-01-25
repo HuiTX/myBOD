@@ -13,7 +13,7 @@ router.get('/', function *(){
 // member
 router.get('/login', Member.login);
 router.get('/isExist-user', Member.isExistUser);
-router.post('/postLogin', Member.postLogin);
+router.post('/user/login', Member.loginUser);
 
 // Customer
 router.get('/customList', Customer.customList);
@@ -29,6 +29,7 @@ router.post('/keyBusiness/:key', Customer.keyBusinessForm);
 router.get('/upload', Customer.upload);
 router.post('/upload/:file', Customer.uploadFile);
 
+router.get('/custom/:id', Customer.customGetById);
 router.get('/custom/get', Customer.customListGet);
 
 // Visit

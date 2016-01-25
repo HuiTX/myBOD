@@ -11,10 +11,15 @@ const CustomController = function () {};
 CustomController.prototype.find = function (request, reply) {
   var helper = new ReplyHelper(request, reply);
   var params = request.query;
+  console.log(params);
 
   // pager params
   var index = Number(params.index) || 1;
   var size = Number(params.size) || 10;
+
+  // for(para in ){
+
+  // };
 
   customDAO.find({
     'offset': size * (index - 1),

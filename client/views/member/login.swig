@@ -9,7 +9,7 @@
 {% block content %}
 <div class="container login">
     <div class="l-logo"></div>
-    <form id="login-form" class="form" method="post" action="/postLogin">
+    <form id="login-form" class="form" method="post" action="/user/login">
         <div class="form-group">
             <div class="input-group">
                 <div class="input-group-addon">
@@ -32,34 +32,7 @@
             </label>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit" v-on:click="formSubmit()">登录</button>
-    </form>
-     {# <form id="login-form" class="form" method="post" action="/postLogin">
-        <h3 class="form-signin-heading">请登录</h3>
-        <div class="form-group">
-          <div class="input-group">
-            <div class="input-group-addon">
-              <i class="glyphicon glyphicon-user"></i>
-            </div>
-            <input type="text" class="form-control" name="username" v-model="username" placeholder="用户名" autocomplete="off">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <div class="input-group">
-            <div class="input-group-addon">
-              <i class=" glyphicon glyphicon-lock "></i>
-            </div>
-            <input type="password" class="form-control" name="password" v-model="password" placeholder="密码" autocomplete="off">
-          </div>
-        </div>
-        <div class="form-group">
-            <label class="checkbox">
-                <input type="checkbox" v-model="remember" style="position:relative;margin:0 5px 0 0;vertical-align:middle;" />记住我
-            </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit" v-on:click="formSubmit()">登录</button>
-    </form> #}
-   
+    </form>   
 </div>
 {% endblock %}
 

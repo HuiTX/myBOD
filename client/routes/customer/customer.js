@@ -55,5 +55,9 @@ exports.editCustomer = function *(){
 };
 
 exports.customListGet = function *(){
-  this.body = yield proxy(this);
+    yield proxy(this, this.request.url);
+};
+
+exports.customGetById = function *(){
+    yield proxy(this, this.request.url);
 };

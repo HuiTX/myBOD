@@ -9,6 +9,13 @@ module.exports = [
       handler: userController.findByID
     }
   },
+  { // new user
+    method: 'GET',
+    path: '/user/login',
+    config : {
+      handler: userController.login
+    }
+  },
   { // find user list
     method: 'GET',
     path: '/user',

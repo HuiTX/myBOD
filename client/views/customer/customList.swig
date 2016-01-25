@@ -6,10 +6,10 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
+    <div class="container" id="app">
         <div class="row banner">
             <img src="./img/banner.png">
-            <a class="button" href="#"><span class="glyphicon glyphicon-star"></span>关键商机</a>
+            <a class="button" href="#"><span class="glyphicon glyphicon-star"></span>关键商机{{ message }}</a>
         </div>
         <div class="row nav">
             <div class="col-xs-6 nav-list active"><a href="/customList"><span class="icon-info"></span>客户信息</a></div>
@@ -112,5 +112,5 @@
 {% endblock %}
 
 {% block script %}
-<script src="/js/custom.js"></script>
+<script src="/js/custom/custom.js"></script>
 {% endblock %}

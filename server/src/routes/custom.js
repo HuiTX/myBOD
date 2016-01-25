@@ -22,5 +22,12 @@ module.exports = [
     config : {
       handler: customController.insert
     }
+  },
+  { // find custom list
+    method: 'POST',
+    path: '/custom/insert',
+    config : {
+      handler: customController.insert
+    }
   }
 ];

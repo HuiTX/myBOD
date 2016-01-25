@@ -1,6 +1,7 @@
 'use strict';
 
-var request = require('koa-request');
+// var request = require('koa-request');
+var request = require('co-request');
 var formidable = require('koa-formidable');
 var fs = require('co-fs');
 var path = require('path');
@@ -10,9 +11,9 @@ var _ = require('lodash');
 // self function is a proxy to access other APIs
 // You define the prefix (in the app.use()) and the target,
 // it will match the routes for you and proxy the result back..
-module.exports.proxy = function *(self, target, mustContain, token) { // Only for GET method
+module.exports.proxy = function *(self, target, mustContain) { // Only for GET method
     var self = self || null;
-    var prefix = 'http://127.0.0.1:9001';
+    var prefix = 'http://192.168.70.184:9001';
     var target = target || self.url;
     var url = '';
 
@@ -63,8 +64,10 @@ module.exports.proxy = function *(self, target, mustContain, token) { // Only fo
         }
 
         if (!_.isEmpty(self.request.body)) {
-            HEADERS['body'] = self.request.body;
+            HEADERS['body'] = JSON.stringify(self.request.body);
         }
+
+        HEADERS['accept-encoding'] = '*/*';
 
         // If file-type
         try{
@@ -85,18 +88,29 @@ module.exports.proxy = function *(self, target, mustContain, token) { // Only fo
                 //var _file = yield fs.writeFile((Path + form.files.file.name), test);
             }
 
-        }catch(e){}
+        }catch(e){ 
+            HEADERS['content-type'] = 'application/json';
+        }
 
+        // var proxyRequest = {
+        //     url: url,
+        //     headers: HEADERS || {'User-Agent': 'proxy'},
+        //     encoding: null,
+        //     timeout: TIMEOUT
+        // };
         var proxyRequest = {
-            url: url,
+            uri: url,
+            method: "GET",
+            json: true,
             headers: HEADERS || {'User-Agent': 'proxy'},
-            encoding: null,
-            timeout: TIMEOUT
         };
+        //console.log(HEADERS);
 
         var result;
         try {            
-            result = yield request.get(proxyRequest);
+            // result = yield request.get(proxyRequest);
+            result = yield request(proxyRequest);
+
         } catch (err) {
             self.status = err.status || 500;
             self.body = {
@@ -129,14 +143,17 @@ module.exports.proxy = function *(self, target, mustContain, token) { // Only fo
             self.response.set('Content-Disposition', contentDisposition);
         }
 
-        var sBody = result.body.toString('utf-8');
-        console.log(sBody);
+        //console.log(result.body);
+        // var sBody = result.body.toString('utf-8');
+        // console.log(sBody);
         self.body = {
-            data: JSON.parse(sBody),
+            //data: JSON.parse(sBody),
+            data: result.body,
             status: 'ok',
             statusCode: self.status
         };
 
+        console.log(self.cookie);
         self.response.set('Cache-Control','public, max-age=' + CACHETIME);
         self.response.set('Expires', (new Date((Math.floor(new Date().getTime() / 1000) + CACHETIME) * 1000)).toUTCString() );
         return;

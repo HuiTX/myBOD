@@ -2,42 +2,56 @@
 {% block title %}负责人列表{% endblock %}
 
 {% block style %}
-<link rel="stylesheet" type="text/css" href="/vendor/validator/jquery.validator.css">
+
 {% endblock %}
 
 {% block content %}
 <div class="container">
-    <form id="login-form" class="form" method="post" action="/postLogin">
-        <h3 class="form-signin-heading">请登录</h3>
-        <div class="form-group">
-          <div class="input-group">
-            <div class="input-group-addon">
-              <i class="glyphicon glyphicon-user"></i>
+    <div class="row status-bar">
+        <a class="goback" href="/customInfo"><span class="glyphicon glyphicon-menu-left"></span></a>
+        负责人列表
+    </div>
+    <div class="row section pt10">
+        <div class="col-xs-6 col-md-3">
+            <div class="major-list">
+                <a href="/majorInfo">
+                    <p class="name"><span class="glyphicon glyphicon-user"></span>李经理</p>
+                    <a class="tel" href="tel:0592:2365235"><span class="glyphicon glyphicon-earphone"></span>0952:2641254</a>
+                    <p class="role"><span class="glyphicon glyphicon-eye-open"></span>决策者</p>
+                </a>
             </div>
-            <input type="text" class="form-control" name="username" v-model="username" placeholder="用户名" autocomplete="off">
-          </div>
         </div>
-
-        <div class="form-group">
-          <div class="input-group">
-            <div class="input-group-addon">
-              <i class=" glyphicon glyphicon-lock "></i>
+        <div class="col-xs-6 col-md-3">
+            <div class="major-list">
+                <a href="/majorInfo">
+                    <p class="name"><span class="glyphicon glyphicon-user"></span>李经理</p>
+                    <a class="tel" href="tel:0592:2365235"><span class="glyphicon glyphicon-earphone"></span>0952:2641254</a>
+                    <p class="role"><span class="glyphicon glyphicon-eye-open"></span>决策者</p>
+                </a>
             </div>
-            <input type="password" class="form-control" name="password" v-model="password" placeholder="密码" autocomplete="off">
-          </div>
         </div>
-        <div class="form-group">
-            <label class="checkbox">
-                <input type="checkbox" v-model="remember" style="position:relative;margin:0 5px 0 0;vertical-align:middle;" />记住我
-            </label>
+        <div class="col-xs-6 col-md-3">
+            <div class="major-list">
+                <a href="/majorInfo">
+                    <p class="name"><span class="glyphicon glyphicon-user"></span>李经理</p>
+                    <a class="tel" href="tel:0592:2365235"><span class="glyphicon glyphicon-earphone"></span>0952:2641254</a>
+                    <p class="role"><span class="glyphicon glyphicon-eye-open"></span>决策者</p>
+                </a>
+            </div>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit" v-on:click="formSubmit()">登录</button>
-    </form>
+        <div class="col-xs-6 col-md-3">
+            <div class="major-list">
+                <a href="/majorInfo">
+                    <p class="name"><span class="glyphicon glyphicon-user"></span>李经理</p>
+                    <a class="tel" href="tel:0592:2365235"><span class="glyphicon glyphicon-earphone"></span>0952:2641254</a>
+                    <p class="role"><span class="glyphicon glyphicon-eye-open"></span>决策者</p>
+                </a>
+            </div>
+        </div>
+    </div> 
 </div>
 {% endblock %}
 
 {% block script %}
-<script src="/vendor/validator/jquery.validator.js"></script>
-<script src="/vendor/validator/local/zh_CN.js"></script>
-<script src="/js/member/login.js"></script>
+
 {% endblock %}
