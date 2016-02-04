@@ -1,15 +1,23 @@
 'use strict';
 
-var app = require('../app');
-var socketIo = require('socket.io') // io 利用事件机制来通信
-var http = require('http');
-var sqlConfig = process.env.mysql;
-var nodeConfig = process.env.node;
+const app    = require('../app');
+const socket = require('socket.io') // io 利用事件机制来通信
+const http   = require('http');
+const port   = process.env.NODE_PORT || 8099;
+
+const os = require('os');
+if (process.env.NODE_ENV === 'development' && os.platform() === 'win32') {
+  // 启动gulp
+  let child_process = require('child_process');
+  child_process.exec('gulp build-dev', {
+      cmd: process.cwd()
+  });
+}
 
 let server, io
 
 server = http.Server(app.callback());
-io = socketIo(server);
-server.listen(8099, function () {
-	console.log("Server at http://127.0.0.1:"+8099+", press [CTRL+C] to stop server");
+io = socket(server);
+server.listen(port, function () {
+  console.log("Server at http://127.0.0.1:" + port + ", press [CTRL+C] to stop server");
 });

@@ -1,0 +1,13 @@
+[{
+  "name": "BOD Server[dev] @ 9001",
+  "script": "index.js",
+  "env": {
+      "NODE_ENV": "development",
+      "NODE_PORT": 9001,
+      "DB_HOST": "192.168.70.209",
+      "DB_USER": "bod_user",
+      "DB_PASS": "UCS69PkQ",
+      "DB_NAME": "d_bod",
+      "DB_PORT": 3306
+  }
+}]

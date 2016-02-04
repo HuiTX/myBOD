@@ -7,82 +7,77 @@ const Store = require('../util/store');
 const jwt = require('jsonwebtoken');
 
 // define
-const UserController = function () {};
+const UserController = function() {};
 
 // find user list
-UserController.prototype.find = function (request, reply) {
-  var helper = new ReplyHelper(request, reply);
-  var params = request.query;
+UserController.prototype.find = function(request, reply) {
+    var helper = new ReplyHelper(request, reply);
+    var params = request.query;
 
-  // pager params
-  var index = Number(params.index) || 1;
-  var size = Number(params.size) || 10;
+    // pager params
+    var index = Number(params.index) || 1;
+    var size = Number(params.size) || 10;
 
-  userDAO.find({
-    'offset': size * (index - 1),
-    'rows': size
-  }, function (err, data) {
-    helper.find(err, data);
-  });
+    params['offset'] = size * (index - 1);
+    params['rows'] = size;
+
+    userDAO.find(params, true, function(err, data) {
+        helper.find(err, data);
+    });
 };
 
 // find user by id
-UserController.prototype.findByID = function (request, reply) {
-  var helper = new ReplyHelper(request, reply);
-  var params = request.params;
+UserController.prototype.findByID = function(request, reply) {
+    var helper = new ReplyHelper(request, reply);
+    var params = request.params;
 
-  userDAO.findByID(params.id, function (err, data) {
-    helper.findOne(err, data);
-  });
+    userDAO.findByID(params.id, function(err, data) {
+        helper.findOne(err, data);
+    });
 };
 
 UserController.prototype.insert = function(request, reply) {
-  var helper = new ReplyHelper(request, reply);
-  var params = request.payload;
+    var helper = new ReplyHelper(request, reply);
+    var params = request.payload;
 
-  var insert = Q.denodeify(userDAO.insert);
+    var findByID = Q.denodeify(userDAO.findByID);
+    var insert = Q.denodeify(userDAO.insert);
+    var update = Q.denodeify(userDAO.update);
 
-  insert(params)
-  .then(function (data) {
-    helper.insert(null, data);
-  })
-  .catch(function (err) {
-    helper.insert(err);
-  });
+    findByID(params.parentId)
+        .then(function(data) {
+            insert(params)
+                .then(function(_data) {
+                    let path = data[0].path + _data.insertId + '-';
+                    let _params = {
+                        id: _data.insertId,
+                        path: path
+                    };
+                    console.log(_params);
+                    update(_params).then(function(_data_) {
+                        helper.insert(null, _data_);
+                    });
+                });
+        })
+        .catch(function(err) {
+            helper.insert(err);
+        });
 };
 
-// find user list
-UserController.prototype.login = function (request, reply) {
-  var helper = new ReplyHelper(request, reply);
-  var params = null;
-  console.log(request.headers)
-  try{
-      if(request.headers.body){
-          params = JSON.parse(request.headers.body);
-      }
-  }catch(e){
-      params = request.query;
-  }
+// UserController.prototype.update = function(request, reply) {
+//     var helper = new ReplyHelper(request, reply);
+//     var params = request.payload;
 
-  userDAO.findByParam(params, function (err, data) {
-    if(err)throw err;
+//     var insert = Q.denodeify(userDAO.insert);
 
-    try{
-        if(data[0].password == params.password) {
-            var token = jwt.sign(params, 'bod');
-
-            Store['token'] = token;
-            reply({'status':'ok','message':'登录成功！','token':token}).type('application/json');
-        }else{
-            Store['token'] = null;
-            reply({'status':'error', 'message':'密码错误！'}).type('application/json');
-        }
-    }catch(e){
-        reply({'status':'error','message':'用户名不存在！'}).type('application/json');
-    }
-    
-  });
-};
+//     update(params)
+//         .then(function(data) {
+//             helper.insert(null, data);
+//         })
+//         .catch(function(err) {
+//             helper.insert(err);
+//         });
+// };
 
 const userController = new UserController();
 module.exports = userController;

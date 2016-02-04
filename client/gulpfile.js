@@ -1,3 +1,4 @@
+var path = require('path');
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var webpack = require('webpack');
@@ -22,7 +23,7 @@ gulp.task("clean", function () {
     .pipe(clean({force: true}));
 });
 
-gulp.task('build-dev', ['css:build-dev', 'vendor:build-dev', 'js:build-dev'], function () {
+gulp.task('build-dev', ['static:build-dev', 'css:build-dev', 'vendor:build-dev', 'js:build-dev'], function () {
   gulp.watch([
     'assets/css/**/*.css'
   ], ['css:build-dev']);
@@ -37,12 +38,18 @@ gulp.task('build-dev', ['css:build-dev', 'vendor:build-dev', 'js:build-dev'], fu
 // develop
 // =========================================
 
+// static
+gulp.task('static:build-dev', function () {
+  return gulp.src(['assets/img/**/*'])
+    .pipe(gulp.dest('dist/img'));
+});
+
 // style
 gulp.task('css:build-dev', function () {
   var processors = [
     atImport,
     atCopy({
-      src: ['src', 'node_modules'],
+      src: ['assets', 'node_modules'],
       dest: 'dist',
       keepRelativePath: false
     }),
@@ -52,7 +59,6 @@ gulp.task('css:build-dev', function () {
 
   return gulp.src(['assets/css/**/*.css', '!assets/css/**/_*.css'])
     .pipe(postcss(processors, { to: 'dist/css/*.css'}))
-    .pipe(postcss(processors, { to: 'dist/css/*.css'}))
     .pipe(gulp.dest('dist/css'));
 });
 
@@ -60,7 +66,13 @@ gulp.task('css:build-dev', function () {
 gulp.task('vendor:build-dev', function () {
   return gulp.src([
       'assets/vendor/jquery/jquery.js',
-      'assets/vendor/vue.js'
+      'assets/vendor/vue.js',
+      'assets/vendor/validator/jquery.validator.js',
+      'assets/vendor/validator/local/zh_CN.js',
+      'assets/vendor/mobiscroll/js/mobiscroll.core.js',
+      'assets/vendor/mobiscroll/js/mobiscroll.frame.js',
+      'assets/vendor/mobiscroll/js/mobiscroll.scroller.js',
+      'assets/vendor/mobiscroll/js/mobiscroll.select.js'
     ])
     .pipe(concat('vendor.js'))
     .pipe(gulp.dest('dist/js'));

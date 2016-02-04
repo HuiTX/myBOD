@@ -1,41 +1,4 @@
-
-
-
-/*todo*/
-
-
-/*.client-classify-title{
-    position: relative;
-    line-height: 40px;
-    font-size: 16px;
-    padding-left: 10px;
-    font-weight: bold;
-    
-}
-.client-classify-title:after{
-    content: '';
-    display: inline-block;
-    position: absolute;
-    left: -5px;
-    top: 10px;
-    width: 2px;
-    height: 20px;
-    background: #0fa3df;
-}
-.client-classify-title a{
-    float: right;
-    font-weight: normal;
-    font-size: 14px;
-    color: #FF8601;
-    line-height: 26px;
-    padding: 0 10px;
-    background: linear-gradient(#fff, #DCD9D9);
-    border:1px solid #ddd;
-    border-radius: 5px;
-    margin-top: 6px;
-}*/
-
-.company-list {
+.colleague-list,.company-list {
     padding: 5px;
     background: #fff;
     margin-bottom: 10px;
@@ -88,9 +51,8 @@
     left: -6px;
 }
 
-.company-info {
+.colleague-info,.company-info {
     position: relative;
-    overflow: hidden;
     margin: 5px -10px;
     padding: 5px;
     background: #fff;
@@ -113,7 +75,7 @@
 .company-info .company-add,
 .company-info .company-logo {
     width: 100%;
-    height: 110px;
+    /*height: 110px;*/
     overflow: hidden;
 }
 
@@ -123,13 +85,12 @@
 
 .company-info .company-add {
     width: 100%;
-    height: 165px;
-    overflow: hidden;
+    /*height: 165px;*/
     background: rgba(15, 163, 223, 0.2);
     text-align: center;
 }
 
-.company-add .rectangle {
+/*.company-add .rectangle {
     display: inline-block;
     width: 6px;
     height: 60px;
@@ -140,10 +101,66 @@
 .company-add .rectangle-vertical {
     transform: rotate(90deg);
     margin: 0 0 0 -6px;
-}
+}*/
 
 .company-add p {
     font-size: 18px;
     color: #0fa3df;
-    line-height: 72px;
+    line-height: 55px;
+}
+
+/*.colleague-list{
+    margin: 0 5px;
+}
+.colleague-list li{
+    position: relative;
+}
+.colleague-list li a{
+    display: block;
+    padding-right: 25px;
+    font-size: 16px;
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #f2f2f2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.colleague-list li span{
+    position: absolute;
+    right: 0;
+    top: 12px;
+    color: #999;
+}*/
+
+.colleague-info{
+    border-color: #ddd;
+    display: -webkit-box;
+}
+.colleague-info .avatar{
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius:50%; 
+    overflow:hidden;
+}
+.colleague-info .avatar img{
+    width: 100%;
+}
+.colleague-info .info{
+    -webkit-box-flex: 1;
+}
+.colleague-info .info p{
+    padding-left:10px;
+    line-height: 24px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.colleague-info .info .name{
+    padding-top: 3px;
+    font-weight: bold;
+}
+.colleague-info .record span{
+    color: #0fa3df;
 }

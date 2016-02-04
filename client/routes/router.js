@@ -1,39 +1,23 @@
-var Member = require('./member/member');
-var Customer = require('./customer/customer');
-var Visit = require('./visit/visit');
-var router = require('koa-router')();
-//var render = require('./render');
 
-/* GET home page. */
+var router = require('koa-router')();
+
+// list of nested routers
+const account  = require('./account');
+const customer = require('./customer');
+const director = require('./director');
+const visit    = require('./visit');
+
+
+// alias
 router.get('/', function *(){
     //this.body = yield render('index');
-    this.response.redirect('/customList')
+    this.response.redirect('/customer')
 });
 
-// member
-router.get('/login', Member.login);
-router.get('/isExist-user', Member.isExistUser);
-router.post('/user/login', Member.loginUser);
-
-// Customer
-router.get('/customList', Customer.customList);
-router.get('/customInfo', Customer.customInfo);
-router.get('/customBasic', Customer.customBasic);
-router.get('/editCustomer', Customer.editCustomer);
-router.get('/majorInfo', Customer.majorInfo);
-router.get('/majorList', Customer.majorList);
-router.get('/competeInfo', Customer.competeInfo);
-router.get('/competeList', Customer.competeList);
-router.get('/keyBusiness', Customer.keyBusiness);
-router.post('/keyBusiness/:key', Customer.keyBusinessForm);
-router.get('/upload', Customer.upload);
-router.post('/upload/:file', Customer.uploadFile);
-
-router.get('/custom/:id', Customer.customGetById);
-router.get('/custom/get', Customer.customListGet);
-
-// Visit
-router.get('/visitList', Visit.visitList);
-router.get('/visitInfo', Visit.visitInfo);
+// page router
+router.use(account.routes(), account.allowedMethods());
+router.use('/customer', customer.routes(), customer.allowedMethods());
+router.use('/director', director.routes(), director.allowedMethods());
+router.use('/visit', visit.routes(), visit.allowedMethods());
 
 module.exports = router;

@@ -8,7 +8,7 @@
 {% block content %}
     <div class="container">
         <div class="row status-bar">
-            <a class="goback" href="/customInfo"><span class="glyphicon glyphicon-menu-left"></span></a>
+            <a class="goback" href="javascript:history.go(-1);"><span class="glyphicon glyphicon-menu-left"></span></a>
             编辑
         </div>
         <div class="row section">
@@ -25,7 +25,7 @@
             </ul>
         </div>
         <div class="row section">
-            <p class="add-bar">添加负责人信息</p>
+            <a class="add-bar" href="/director/info">添加负责人信息</a>
         </div>
         <div class="row section">
             <p class="add-bar">添加竞争对手信息</p>
@@ -47,7 +47,7 @@
                 <li>
                     <span class="word">采购种类</span>
                     <div class="control">
-                        <select>
+                        <select multiple="multiple">
                             <option>种类1</option>
                             <option>种类2</option>
                             <option>种类3</option>

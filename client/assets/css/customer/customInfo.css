@@ -1,8 +1,12 @@
-
-.section .customer-basic{
+.section .customer-basic {
     display: block;
     margin: 0 -10px;
 }
+.section .customer-basic p{
+    line-height: 24px;
+
+}
+
 .section .labels {
     margin: 10px 0;
     padding: 0;
@@ -28,35 +32,7 @@
     padding-right: 40px;
     border-top: 1px solid #ddd;
 }
-.principal-list{
+
+.principal-list {
     padding: 0 10px 5px;
-}
-
-
-
-
-.btn-box{
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    margin-top: 20px;
-}
-@media screen and (min-width: 992px){
-    .btn-box {
-        position: relative;
-    }
-}
-.btn-box a{
-    float: left;
-    width: 50%;
-    height: 40px;
-    font-size: 16px;
-    line-height: 40px;
-    text-align: center;
-    color: #fff;
-    background: #C70303;
-}
-.btn-box a:first-child{
-    background: #0fa3df;
 }

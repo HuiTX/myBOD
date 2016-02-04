@@ -2,13 +2,15 @@
 
 // require module
 const Hapi = require('hapi');
+const Basic = require('hapi-auth-basic');
+const Store = require('./src/util/store');
+const Boom = require('boom');
 const util = require('util');
 const _ = require('lodash');
 const chalk = require('chalk');
 const logger = require('./src/util/logger');
 const constants = require('./src/config/constants.js');
 const routes = require('./src/routes');
-
 const host = constants.application['host'];
 const port = constants.application['port'];
 const db = constants.database;
@@ -20,22 +22,37 @@ server.connection({
 });
 
 // add plugin
-// server.ext('onRequest', function(request, reply){
-//   // request.plugins.createControllerParams = function(requestParams){
-//   //   console.log(123);
-//   //   // var params = _.clone(requestParams);
-//   //   // params.userId = request.auth.credentials.userId;
-//   //   // return params;
-//   //   return requestParams;
-//   // };
-//   return reply.continue();
-// });
+server.ext('onRequest', function(request, reply){
+  if(/login/g.test(request.url.pathname)){
+     return reply.continue();
+  }
+
+  validateToken(request, reply);
+});
+
+const validateToken = function (request, reply) {
+  let token = request.headers['token'];
+  let value = Store.get(token);
+
+  if (!value) {
+      //request.headers['__user'] = {id: 1};
+      return reply('').code(401);
+  } else {
+    Store.token(token, 'user', function(err, data){
+      // if(err)return reply(Boom.unauthorized('')).code(401);
+      delete data.user.password;
+      request.headers['__user'] = data.user;
+
+      return reply.continue();
+    });
+  }
+};
 
 // write logger to console for each request
 server.ext('onPreResponse', function(request, reply){
   var statusCode = request.response.statusCode || request.response.output.statusCode || '-';
 
-  if (statusCode === 200) {
+  if (statusCode >= 200 && statusCode < 300) {
     statusCode = chalk.green(statusCode);
   } else {
     statusCode = chalk.red(statusCode);
@@ -50,9 +67,16 @@ server.ext('onPreResponse', function(request, reply){
 
 // register routes
 for (var route in routes) {
-  server.route(routes[route]);
+    server.route(routes[route]);
 }
 
+// server.register(Basic, (err) => {
+//     server.auth.strategy('token', 'basic', { validateFunc: validate });
+
+//     for (var route in routes) {
+//       server.route(routes[route]);
+//     }
+// });
 
 // start server
 server.start(() => {

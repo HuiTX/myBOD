@@ -7,15 +7,15 @@
 {% endblock %}
 
 {% block content %}
-<div class="container login">
+<div class="container login" id="login" v-cloak>
     <div class="l-logo"></div>
-    <form id="login-form" class="form" method="post" action="/user/login">
+    <form id="login-form" class="form">
         <div class="form-group">
             <div class="input-group">
                 <div class="input-group-addon">
                     <i class="glyphicon glyphicon-user"></i>
                 </div>
-                <input type="text" class="form-control" name="username" v-model="username" placeholder="用户名" autocomplete="off">
+                <input id="username" type="text" class="form-control" name="username" v-model="username" placeholder="用户名" autocomplete="off">
             </div>
         </div>
         <div class="form-group">
@@ -31,12 +31,13 @@
                 <input type="checkbox" v-model="remember"/>记住我
             </label>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit" v-on:click="formSubmit()">登录</button>
-    </form>   
+        <button class="btn btn-lg btn-primary btn-block" type="button" v-on:click="formSubmit()">登录</button>
+    </form>
 </div>
 {% endblock %}
 
 {% block script %}
+{# <script src="/vendor/jquery/jquery.cookie.js"></script> #}
 <script src="/vendor/validator/jquery.validator.js"></script>
 <script src="/vendor/validator/local/zh_CN.js"></script>
 <script src="/js/member/login.js"></script>

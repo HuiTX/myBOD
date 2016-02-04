@@ -40,4 +40,13 @@ ReplyHelper.prototype.insert = function(err, data) {
   this.reply(data).code(201).type('application/json');
 };
 
+// replay
+ReplyHelper.prototype.update = function(err, data) {
+  if (err) {
+    return this.reply(Boom.badImplementation(err));
+  }
+
+  this.reply(data).code(200).type('application/json');
+};
+
 module.exports = ReplyHelper;

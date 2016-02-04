@@ -34,7 +34,7 @@ module.exports = function() {
   } else if (!obj.database['user']) {
     throw new Error('Missing constant database.user. Check your enviroment variables.');
   } else if (!obj.database['password']) {
-    //throw new Error('Missing constant database.password. Check your enviroment variables.');
+    throw new Error('Missing constant database.password. Check your enviroment variables.');
   } else if (!obj.database['database']) {
     throw new Error('Missing constant database.database. Check your enviroment variables.');
   }
@@ -50,11 +50,11 @@ module.exports = function() {
         'database' : 'd_bod'
       },
       'development' : {
-        'host' : process.env.DB_HOST || '127.0.0.1',
-        'user' : process.env.DB_USER || 'root',
+        'host' : process.env.DB_HOST || '192.168.70.209',
+        'user' : process.env.DB_USER || 'bod_user',
         'port' : process.env.DB_PORT || 3306,
-        'password' : process.env.DB_PASS || '',
-        'database' : process.env.DB_NAME || 'bod'
+        'password' : process.env.DB_PASS || 'UCS69PkQ',
+        'database' : process.env.DB_NAME || 'd_bod'
       },
       'test' : {
         'host' : 'localhost',

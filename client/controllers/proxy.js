@@ -1,12 +1,11 @@
 'use strict';
 
-// var request = require('koa-request');
-var request = require('co-request');
-var formidable = require('koa-formidable');
-var fs = require('co-fs');
-var path = require('path');
-var httpOrhttps = require('http');
-var _ = require('lodash');
+const path = require('path');
+const request = require('co-request');
+const formidable = require('koa-formidable');
+const fs = require('co-fs');
+const _ = require('lodash');
+
 
 // self function is a proxy to access other APIs
 // You define the prefix (in the app.use()) and the target,
@@ -47,7 +46,7 @@ module.exports.proxy = function *(self, target, mustContain) { // Only for GET m
             if(typeof mustContain !== 'string'){
                 mustContain = JSON.stringify(mustContain);
             }
-            
+
             let urlTmp = url.split(pattern)[0];
             if(/\?/.test(urlTmp)){
                 url = urlTmp + '&data=' + mustContain;
@@ -68,7 +67,7 @@ module.exports.proxy = function *(self, target, mustContain) { // Only for GET m
         }
 
         HEADERS['accept-encoding'] = '*/*';
-
+        console.log(self.request.getLocaleFromCookie());
         // If file-type
         try{
             if (HEADERS['content-type'].toLowerCase().indexOf('multipart/') >= 0) {
@@ -82,13 +81,13 @@ module.exports.proxy = function *(self, target, mustContain) { // Only for GET m
                 HEADERS['filesname'] = form.files.file.name;
                 HEADERS['filespath'] = form.files.file.path;
                 HEADERS['filestemp'] = temp;
-                
+
                 var stream = yield fs.createReadStream(form.files.file.path);
                 form.files.file && (HEADERS['files'] = stream.toString('base64'));
                 //var _file = yield fs.writeFile((Path + form.files.file.name), test);
             }
 
-        }catch(e){ 
+        }catch(e){
             HEADERS['content-type'] = 'application/json';
         }
 
@@ -104,10 +103,9 @@ module.exports.proxy = function *(self, target, mustContain) { // Only for GET m
             json: true,
             headers: HEADERS || {'User-Agent': 'proxy'},
         };
-        //console.log(HEADERS);
 
         var result;
-        try {            
+        try {
             // result = yield request.get(proxyRequest);
             result = yield request(proxyRequest);
 
@@ -153,10 +151,12 @@ module.exports.proxy = function *(self, target, mustContain) { // Only for GET m
             statusCode: self.status
         };
 
-        console.log(self.cookie);
+        //console.log(self.headers['set-cookie']);
         self.response.set('Cache-Control','public, max-age=' + CACHETIME);
         self.response.set('Expires', (new Date((Math.floor(new Date().getTime() / 1000) + CACHETIME) * 1000)).toUTCString() );
         return;
     }
     yield next;
 };
+
+module.exports = function *() {}

@@ -12,10 +12,12 @@
 }
 .visit-main .time{
     display: inline-block;
-    width: 70px;
+    width: 63px;
     font-size: 12px;
     color: #999;
     text-align: right;
+    overflow: hidden;
+    white-space: nowrap;
     -webkit-box-flex: 1;
 }
 .visit-list li .major{

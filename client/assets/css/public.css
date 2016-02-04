@@ -1,4 +1,8 @@
 @charset "utf-8";
+
+@import "../vendor/bootstrap/css/bootstrap.css";
+@import "../vendor/validator/jquery.validator.css";
+
 html {
     height: 100%;
 }
@@ -34,15 +38,26 @@ li {
     padding: 0;
 }
 
+[v-cloak] {
+  display: none;
+}
+
 .pb60 {
     padding-bottom: 60px;
+}
+.mb10{
+    margin-bottom: 10px !important;
 }
 .pt10{
     padding-top: 10px !important;
 }
+.dn{
+    display: none;
+}
 
 .banner {
     position: relative;
+    min-height: 60px;
 }
 
 .banner img {
@@ -77,6 +92,21 @@ li {
     font-size: 16px;
     color: #fff;
 }
+.goback-top{
+    position: absolute;
+    width: 34px;
+    height: 26px;
+    top: 10px;
+    left: 10px;
+    background: rgba(15,163,223,0.2);
+    border-radius: 12px;
+}
+.goback-top .glyphicon{
+    top: 5px;
+    font-size: 16px;
+    left: 8px;
+    color: #ccc;
+}
 
 .nav {
     height: 60px;
@@ -99,6 +129,7 @@ li {
 
 .nav .nav-list a {
     padding-left: 40px;
+    display: block;
 }
 
 .nav .icon-visit,
@@ -147,6 +178,7 @@ li {
     height: 55px;
     background: url(/img/business.png) no-repeat;
     background-size: contain;
+    z-index: 10;
 }
 
 
@@ -181,7 +213,14 @@ li {
     border-width: 1px 0;
     padding: 0 5px;
 }
-
+.section .add-bar{
+    display: block;
+    line-height: 40px;
+    text-align: center;
+    font-size: 16px;
+    color: #0fa3df;
+    cursor: pointer;
+}
 .section .title {
     font-size: 16px;
     font-weight: bold;
@@ -201,13 +240,14 @@ li {
 }
 
 .display-box-li li {
-    display: -webkit-box;
+    display: -webkit-box;-webkit-box-flex: 1;
+    -webkit-box-align:center;
 }
 
 .display-box-li li .word {
     display: inline-block;
     width: 100px;
-    padding-right: 10px;
+    padding:10px 10px 10px 0;
     color: #777;
     font-weight: normal;
     -webkit-box-flex: 1;
@@ -216,9 +256,21 @@ li {
 .display-box-li li .control {
     -webkit-box-flex: 1;
 }
+.display-box-li li .control a{
+    display: block;
+}
 .display-box-li li a.control{
+    padding: 10px 0;
     display: block;
     color: #0fa3df;
+}
+.display-box-li li .control input{
+    width: 100%;
+    display: block;
+    padding: 10px 0;
+    border: none;
+    background-color: #fff;
+    -webkit-appearance: none;
 }
 
 .display-box-li li .glyphicon {
@@ -248,22 +300,44 @@ li {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.major-list .btn-major{
+    margin: 5px -10px -10px;
+    height: 34px;
+    border-top:1px solid #eee; 
+    display: -webkit-box;
+    -webkit-box-align:center;
+}
+.major-list .btn-major a{
+    display: block;
+    cursor: pointer;
+    -webkit-box-flex: 1;
+    text-align: center;
+}
+.major-list .btn-major a .text{
+    font-size: 12px;
+}
+.major-list .btn-major a:first-child{
+    border-right:1px solid #eee; 
+}
+.major-list .btn-major a .glyphicon{
+    top: 4px;
+}
 .major-list .glyphicon{
     top: 2px;
     color: #ddd;
-    margin-right: 10px;
+    margin-right: 8px;
 }
 .major-list .tel{
     position: relative;
     display: block;
     color: #0fa3df;
-    margin-bottom: 5px;
+    /*margin-bottom: 5px;*/
 }
 .major-list .tel .glyphicon{
     color: #0fa3df;
 }
 
-.major-list .tel:after{
+/*.major-list .tel:after{
     content: '';
     height: 2px;
     width: 102px;
@@ -272,12 +346,12 @@ li {
     bottom: 2px;
     left: 26px;
     z-index: 1;
-}
+}*/
 
 .compete-list .company-name,.compete-list .advantage{
     display: block;
     padding-left: 25px;
-    line-height: 22px;  
+    line-height: 22px;
     font-size: 14px;
     height: 45px;
     overflow: hidden;
@@ -303,22 +377,37 @@ li {
 }
 
 .basic-main .name {
-    font-weight: bold;
     padding: 0px 0 15px;
+    position: relative;
+}
+.basic-main .name input{
+    display: block;
+    padding-left: 10px;
+    width: 100%;
     font-size: 16px;
-    line-height: 24px;
+    line-height: 22px;
+    -webkit-appearance: none;
+    background: #fff;
+    border-radius: 0;
+    border: none;
+}
+.basic-main .inputBorder input{
+    line-height: 32px;
+    margin-bottom: 10px;
+    border:1px solid #ddd;
 }
 
 .basic-main ul li {
-    padding: 5px;
+    padding: 0 5px;
     margin-bottom: 5px;
     border: 1px dashed #ddd;
+    position: relative;
 }
 
 .basic-main ul li .glyphicon {
     margin-right: 10px;
     color: #0fa3df;
-    top: 4px;
+    top: 1px;
 }
 
 .basic-list {
@@ -326,8 +415,9 @@ li {
 }
 
 .basic-list li {
+    position: relative;
     border-bottom: 1px solid #f2f2f2;
-    padding: 8px 0;
+    line-height: 22px;
 }
 
 .basic-list li .word {
@@ -344,6 +434,51 @@ li {
 .btn-icon-right .glyphicon {
     margin-left: 10px;
 }
+.btn-top-right{
+    padding-bottom: 10px;
+    text-align: right;
+}
+
+.btn-fix-box {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin-top: 20px;
+    display: -webkit-box;
+}
+
+@media screen and (min-width: 992px) {
+    .btn-fix-box {
+        position: relative;
+    }
+}
+
+.btn-fix-box a {
+    display: block;
+    width: 50%;
+    -webkit-box-flex: 1;
+    height: 40px;
+    font-size: 16px;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+    background: #0fa3df;
+}
+
+.btn-fix-box .second {
+    background: #C70303;
+}
+
+/*mobiscroll*/
+.mbsc-mobiscroll .dw-msel:before {
+    font-size: 14px !important;
+    color: #4eccc4 !important;
+}
+
+/*input[placeholder], [placeholder], *[placeholder] {
+   color:#999 !important;
+} */
 
 
 

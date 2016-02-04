@@ -1,0 +1,8 @@
+@import url(../../vendor/mobiscroll/css/mobiscroll.animation.css);
+@import url(../../vendor/mobiscroll/css/mobiscroll.icons.css);
+@import url(../../vendor/mobiscroll/css/mobiscroll.frame.css);
+@import url(../../vendor/mobiscroll/css/mobiscroll.scroller.css);
+.mbsc-mobiscroll .dw-msel:before {
+    font-size: 14px;
+    color: #4eccc4;
+}
